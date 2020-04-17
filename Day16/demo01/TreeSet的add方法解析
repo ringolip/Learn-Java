@@ -1,0 +1,20 @@
+
+// tree的add方法实现
+class TreeSet implement Set() {
+
+    private transient NavigableMap<E,Object> m;
+
+    // 无参数构造方法
+    public TreeSet() {
+        this(new TreeMap<>());
+    }
+
+
+
+    public boolean add(E e) {
+            return m.put(e, PRESENT)==null;
+        }
+}
+
+
+
