@@ -1,0 +1,2 @@
+className=ringo.day25.reflectconfig.Teacher
+methodName=teach
