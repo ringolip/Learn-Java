@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onclick事件</title>
+    <script type="text/javascript">
+        function cli() {
+            alert("被点了");
+        }
+        window.onload = function () {
+            var btnObj = document.getElementById("btn");
+            btnObj.onclick = function () {
+                alert("又被点了");
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="cli()">按钮</button><br/>
+    <button id="btn">按钮2</button>
+</body>
+</html>

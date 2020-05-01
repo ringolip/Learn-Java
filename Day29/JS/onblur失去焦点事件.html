@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onblur失去焦点事件</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var nameObj = document.getElementById("name");
+            nameObj.onblur = function() {
+                console.log("动态注册事件失去焦点")
+            }
+        }
+        function pwd() {
+            console.log("静态注册事件失去焦点")
+        }
+    </script>
+</head>
+<body>
+    姓名：<input type="text" id="name">
+    密码：<input type="password" onblur="pwd()">
+
+</body>
+</html>
