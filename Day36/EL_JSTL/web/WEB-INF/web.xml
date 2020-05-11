@@ -7,9 +7,17 @@
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>ringo.servlet.UploadServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DownloadServlet</servlet-name>
+        <servlet-class>ringo.servlet.DownloadServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>UploadServlet</servlet-name>
         <url-pattern>/uploadservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownloadServlet</servlet-name>
+        <url-pattern>/downloadservlet</url-pattern>
     </servlet-mapping>
 </web-app>
