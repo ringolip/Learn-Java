@@ -4,10 +4,29 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="student01" class="ringo.bean.Student">
+	<!-- 实验8：bean之间的依赖 depends-on可以改变创建顺序-->
+	<bean id="student01" class="ringo.bean.Student" scope="prototype">
 		<property name="stuId" value="1"></property>
 		<property name="stuName" value="lilneng"></property>
 		<property name="stuAge" value="23"></property>
-	
 	</bean>
+	
+	
+	
+	<!-- 实验7：通过abstract属性创建一个模板bean -->
+	<bean id="person01" class="ringo.bean.Person" abstract="true">
+		<property name="lastName" value="赵四"></property>
+		<property name="age" value="39"></property>
+		<property name="gender" value="男"></property>
+		<property name="email" value="zhaosi@qq.com"></property>
+	</bean>
+	
+	<!-- 实验9：测试bean的作用域，分别创建单实例和多实例的bean★ -->
+	<!-- 实验6：通过继承实现bean配置信息的重用 -->
+	<bean id="person02" parent="person01" scope="singleton"> <!-- 使用parent属性继承配置信息 -->
+		<property name="lastName" value="谢广坤"></property>
+		<property name="email" value="guangkun@qq.com"></property>
+	</bean>
+	
+	
 </beans>

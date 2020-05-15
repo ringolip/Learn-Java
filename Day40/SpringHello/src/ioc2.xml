@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	
+	<!-- 实验5：配置通过静态工厂方法创建的bean、实例工厂方法创建的bean、FactoryBean★ -->
+	<bean id="airplain01" class="ringo.factory.StaticFactory" factory-method="getAirplain">
+		<constructor-arg name="captionName" value="lilneng"></constructor-arg> <!-- 指定参数 -->
+	</bean>
+
+	<!-- 创建实例工厂对象 -->
+	<bean id="instanceFactory" class="ringo.factory.InstanceFactory"></bean>
+	<bean id="airplain02" class="ringo.bean.Airplain" factory-bean="instanceFactory" factory-method="getAirplain">
+		<constructor-arg name="captionName" value="赵四"></constructor-arg>
+	</bean>
+	
+	<!-- 使用FactoryBean工厂 -->
+	<bean id="myFactoryBeanImpl" class="ringo.factory.MyFactoryBeanImpl">
+	</bean>
+</beans>

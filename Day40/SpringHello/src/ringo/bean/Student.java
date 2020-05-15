@@ -5,7 +5,7 @@ public class Student {
 	private String stuName;
 	private Integer stuAge;
 	public Student() {
-		System.out.println("创建对象...");
+		System.out.println("创建student对象");
 	}
 	public Integer getStuId() {
 		return stuId;
