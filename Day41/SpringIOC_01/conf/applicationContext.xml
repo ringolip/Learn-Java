@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="myBeanPostProcessor" class="ringo.beans.MyBeanPostProcessor"></bean>
+	<bean id="person01" class="ringo.beans.Person" init-method="initMethod" destroy-method="destoryMethod">
+		<property name="lastName" value="赵四"></property>
+		<property name="age" value="39"></property>
+		<property name="gender" value="男"></property>
+		<property name="email" value="zhaosi@qq.com"></property>
+	</bean>
+</beans>
