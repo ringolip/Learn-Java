@@ -23,7 +23,7 @@ public class PreparedStatementUpdateTest {
 	
 	
 	// 通用的增删改操作
-	public void update(String sql, Object... args) {
+	public int update(String sql, Object... args) {
 		Connection conn = null;
 		PreparedStatement prepareStatement = null;
 		
@@ -38,12 +38,16 @@ public class PreparedStatementUpdateTest {
 				prepareStatement.setObject(i + 1, args[i]);
 			}
 			// 4.执行SQL
-			prepareStatement.execute();
+//			prepareStatement.execute();
+			return prepareStatement.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtils.closeResource(conn, prepareStatement);
 		}
+		
+		return 0;
 	}
 
 	@Test
