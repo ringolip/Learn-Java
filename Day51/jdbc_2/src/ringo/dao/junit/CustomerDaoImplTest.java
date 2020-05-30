@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import ringo.bean.Customers;
 import ringo.dao.CustomerDaoImpl;
+import ringo.util.C3P0Utils;
 import ringo.util.JDBCUtils;
 
 public class CustomerDaoImplTest {
@@ -66,7 +67,7 @@ public class CustomerDaoImplTest {
 	public void testGetCustomerById() {
 		Connection conn = null;
 		try {
-			conn = JDBCUtils.getConnection();
+			conn = JDBCUtils.getConnection3();
 
 			Customers customer = dao.getCustomerById(conn, 5);
 			System.out.println(customer);

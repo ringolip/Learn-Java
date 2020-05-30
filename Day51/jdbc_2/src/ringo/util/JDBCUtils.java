@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.sql.DataSource;
+
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
 import java.sql.Connection;
 
 /**
@@ -34,6 +38,31 @@ public class JDBCUtils {
 
 		// 3. 获取连接
 		Connection conn = DriverManager.getConnection(url, user, password);
+		return conn;
+	}
+	
+	/**
+	 * 使用Druid数据库连接池技术
+	 */
+	private static DataSource source1;
+	
+	static{
+		try {
+			Properties pros = new Properties();
+			
+			InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("druid.properties");
+			
+			pros.load(is);
+			
+			source1 = DruidDataSourceFactory.createDataSource(pros);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static Connection getConnection3() throws SQLException{
+		
+		Connection conn = source1.getConnection();
 		return conn;
 	}
 	
