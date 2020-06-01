@@ -67,7 +67,7 @@ public class CustomerDaoImplTest {
 	public void testGetCustomerById() {
 		Connection conn = null;
 		try {
-			conn = JDBCUtils.getConnection3();
+			conn = JDBCUtils.getDruidConnection();
 
 			Customers customer = dao.getCustomerById(conn, 5);
 			System.out.println(customer);

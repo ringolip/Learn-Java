@@ -10,7 +10,10 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.dbutils.DbUtils;
+
 import com.alibaba.druid.pool.DruidDataSourceFactory;
+import com.mysql.jdbc.Statement;
 
 import java.sql.Connection;
 
@@ -44,7 +47,7 @@ public class JDBCUtils {
 	/**
 	 * 使用Druid数据库连接池技术
 	 */
-	private static DataSource source1;
+	private static DataSource sourceDruid;
 	
 	static{
 		try {
@@ -54,15 +57,15 @@ public class JDBCUtils {
 			
 			pros.load(is);
 			
-			source1 = DruidDataSourceFactory.createDataSource(pros);
+			sourceDruid = DruidDataSourceFactory.createDataSource(pros);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static Connection getConnection3() throws SQLException{
+	public static Connection getDruidConnection() throws SQLException{
 		
-		Connection conn = source1.getConnection();
+		Connection conn = sourceDruid.getConnection();
 		return conn;
 	}
 	
@@ -111,6 +114,37 @@ public class JDBCUtils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/**
+	 * 使用DbUtils关闭资源
+	 * @param conn
+	 * @param ps
+	 * @param rs
+	 */
+	public static void closeResourceDbUtils(Connection conn, Statement ps, ResultSet rs) {
+//		try {
+//			DbUtils.close(conn);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			DbUtils.close(ps);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			DbUtils.close(rs);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		DbUtils.closeQuietly(conn);
+		DbUtils.closeQuietly(ps);
+		DbUtils.closeQuietly(rs);
 	}
 	
 }
